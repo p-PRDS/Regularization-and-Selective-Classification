@@ -1,0 +1,46 @@
+model:
+  name: squeezenet
+train:
+  seed: 42
+  batchsize: 128
+  valid_prop: 0.1
+  folds: 5
+  n_steps: 70400
+  n_steps_for_eval: 352
+  warmup_steps: 352
+  scheduler:
+    _target_: torch.optim.lr_scheduler.MultiStepLR
+    milestones:
+    - 21120
+    - 42240
+    - 63360
+    gamma: 0.2
+  optimizer:
+    _target_: torch.optim.SGD
+    lr: 0.1
+    momentum: 0.9
+    weight_decay: 0.0005
+  criterion:
+    _target_: torch.nn.CrossEntropyLoss
+    label_smoothing: 0.1
+  mixup: 1.0
+  cutmix: 1.0
+  metrics:
+    Accuracy:
+      _target_: regularization_and_sc.utils.metrics.accuracy
+      _partial_: true
+    NLL:
+      _target_: torch.nn.CrossEntropyLoss
+  wandb:
+    project: RegularizationInSC-Cifar-Classifiers
+    group: ${model.name}_bestClassifier
+    config:
+      batchsize: ${train.batchsize}
+      weight_decay: ${train.optimizer.weight_decay}
+      label_smoothing: ${train.criterion.label_smoothing}
+      mixup: ${train.mixup}
+      cutmix: ${train.cutmix}
+  saving_path: ${paths.models}/cifar/classifiers/${model.name}
+paths:
+  project: /home/pedro-pordeus/regularization_and_sc
+  models: ${paths.project}/models

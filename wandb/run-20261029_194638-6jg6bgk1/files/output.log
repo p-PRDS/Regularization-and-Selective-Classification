@@ -1,0 +1,10 @@
+Error executing job with overrides: ['model.name=shufflenetv2']
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 53, in main
+    saving_path=cfg.saving_path, file_name=name)
+                ^^^^^^^^^^^^^^^
+omegaconf.errors.ConfigAttributeError: Key 'saving_path' is not in struct
+    full_key: saving_path
+    object_type=dict
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

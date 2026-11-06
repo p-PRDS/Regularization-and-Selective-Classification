@@ -1,0 +1,145 @@
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 56, in <module>
+    main()
+    ~~~~^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+    ~~~~~~~~~~^
+        args=args,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+    ~~~~~~~~^
+        run=args.run,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 465, in _run_app
+    run_and_report(
+    ~~~~~~~~~~~~~~^
+        lambda: hydra.multirun(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        )
+        ^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 466, in <lambda>
+    lambda: hydra.multirun(
+            ~~~~~~~~~~~~~~^
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        task_function=task_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/hydra.py", line 162, in multirun
+    ret = sweeper.sweep(arguments=task_overrides)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_sweeper.py", line 177, in sweep
+    results = self.launcher.launch(batch, initial_job_idx=initial_job_idx)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_launcher.py", line 74, in launch
+    ret = run_job(
+        hydra_context=self.hydra_context,
+    ...<3 lines>...
+        job_subdir_key="hydra.sweep.subdir",
+    )
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/core/utils.py", line 189, in run_job
+    ret.return_value = task_function(task_cfg)
+                       ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 46, in main
+    train(model=model, trainloader=trainloader, valloader=valloader,
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         criterion=criterion, optimizer=optimizer, scheduler=scheduler,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+         wb=wb, eval_trainloader=None,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         saving_path=cfg.train.saving_path, file_name=name)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/train.py", line 68, in train
+    loss.backward()
+    ~~~~~~~~~~~~~^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/_tensor.py", line 626, in backward
+    torch.autograd.backward(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        self, gradient, retain_graph, create_graph, inputs=inputs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/autograd/__init__.py", line 347, in backward
+    _engine_run_backward(
+    ~~~~~~~~~~~~~~~~~~~~^
+        tensors,
+        ^^^^^^^^
+    ...<5 lines>...
+        accumulate_grad=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/autograd/graph.py", line 823, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        t_outputs, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )  # Calls into the C++ engine to run the backward pass
+    ^
+KeyboardInterrupt
+Exception in thread Thread-2 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+    ~~~~~~~~~~~^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/multiprocessing/queues.py", line 120, in get
+    return _ForkingPickler.loads(res)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/multiprocessing/connection.py", line 525, in Client
+    answer_challenge(c, authkey)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/multiprocessing/connection.py", line 962, in answer_challenge
+    response = connection.recv_bytes(256)        # reject large message
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/multiprocessing/connection.py", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+Exception ignored in atexit callback <bound method OpenTelemetryProxy.shutdown of <wandb.analytics.opentelemetry.opentelemetry_proxy.OpenTelemetryProxy object at 0x7f0d3b8230e0>>:
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/analytics/opentelemetry/opentelemetry_proxy.py", line 818, in shutdown
+    meter_provider.shutdown(timeout_millis=timeout_millis)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/opentelemetry/sdk/metrics/_internal/__init__.py", line 579, in shutdown
+    metric_reader.shutdown(timeout_millis=(deadline_ns - current_ts) / 10**6)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/opentelemetry/sdk/metrics/_internal/export/__init__.py", line 540, in shutdown
+    self._daemon_thread.join(timeout=(deadline_ns - time_ns()) / 10**9)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/threading.py", line 1094, in join
+    self._handle.join(timeout)
+KeyboardInterrupt:
+[2026-10-29 20:03:44,146][opentelemetry.sdk.metrics._internal][WARNING] - shutdown can only be called once

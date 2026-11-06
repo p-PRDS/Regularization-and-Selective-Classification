@@ -1,0 +1,118 @@
+model:
+  name: densenet121
+  frozen_modules:
+    _target_: regularization_and_sc.fine_tuning.utils.get_frozen_children_modules
+    _partial_: true
+    n_unfrozen_layers: 1
+train:
+  data_seed: 42
+  model_seed: 42
+  dataloader_seed: 42
+  batchsize: 128
+  valid_prop: 0.1
+  folds: 5
+  n_steps: 10560
+  n_steps_for_eval: 352
+  warmup_steps: 352
+  scheduler:
+    _target_: torch.optim.lr_scheduler.MultiStepLR
+    milestones:
+    - 3168
+    - 6336
+    - 9504
+    gamma: 0.2
+  optimizer:
+    _target_: torch.optim.SGD
+    lr: 0.1
+    momentum: 0.9
+    weight_decay: 0.0005
+  criterion:
+    _target_: torch.nn.CrossEntropyLoss
+    label_smoothing: 0.0
+  mixup: 0.0
+  cutmix: 0.0
+  classifier:
+    path: ${paths.models}/cifar/classifiers/${model.name}
+    name: ${model.name}_bestClassifier
+    checkpoint: LastStep
+  pretrained_weights:
+    path: ${paths.models}/cifar/classifiers/${model.name}/weights
+    name: ${model.name}_bestClassifier
+    checkpoint: LastStep
+  metrics_dict:
+    val:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+      FC-AURC:
+        _target_: regularization_and_sc.utils.metrics.FC_AURC
+    train:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+      FC-AURC:
+        _target_: regularization_and_sc.utils.metrics.FC_AURC
+  wandb:
+    project: RegularizationInSC-Cifar-Estimators
+    group: ${model.name}_FineTuningLastLayer
+    config:
+      batchsize: ${train.batchsize}
+      weight_decay: ${train.optimizer.weight_decay}
+      label_smoothing: ${train.criterion.label_smoothing}
+      mixup: ${train.mixup}
+      cutmix: ${train.cutmix}
+  saving_path: ${paths.models}/cifar/estimators/finetuning/${model.name}
+eval:
+  model:
+    path: ${paths.models}/cifar/classifiers/${model.name}
+    weights_name: ${model.name}_bestClassifier
+    checkpoint: LastStep
+  data_seed: 42
+  valid_prop: 0.1
+  folds:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  metrics_dict:
+    test:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+    val:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+    train:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+paths:
+  project: /home/pedro-pordeus/regularization_and_sc
+  models: ${paths.project}/models

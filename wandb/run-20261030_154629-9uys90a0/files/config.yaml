@@ -1,0 +1,71 @@
+_wandb:
+    value:
+        cli_version: 0.31.0
+        e:
+            01a18e22-83f1-7305-ba97-e2321719da30:
+                args:
+                    - model.name=googlenet,resnet50,shufflenetv2,squeezenet,densenet121
+                    - --multirun
+                codePath: scripts/cifar100/train.py
+                codePathLocal: scripts/cifar100/train.py
+                cpu:
+                    model: AMD Ryzen 9 5900X 12-Core Processor
+                cpu_count: 12
+                cpu_count_logical: 24
+                cudaVersion: "12.2"
+                disk:
+                    /:
+                        total: "1966736678912"
+                        used: "1481155985408"
+                executable: /home/pedro-pordeus/regularization_and_sc/.venv/bin/python
+                gpu: NVIDIA GeForce RTX 3090
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 10496
+                      memoryTotal: "25769803776"
+                      name: NVIDIA GeForce RTX 3090
+                      pciBusId: "00000000:09:00.0"
+                      uuid: GPU-5437b43f-89ff-6b8f-07b7-ab57cfa50e80
+                host: ml8
+                memory:
+                    total: "67322257408"
+                os: Linux-5.15.0-198-generic-x86_64-with-glibc2.35
+                program: /home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py
+                python: CPython 3.13.5
+                root: /home/pedro-pordeus/regularization_and_sc
+                startedAt: "2026-10-30T18:46:29.101938Z"
+                writerId: 01a18e22-83f1-7305-ba97-e2321719da30
+        m: []
+        python_version: 3.13.5
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 50
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 50
+                - 53
+            "3":
+                - 2
+                - 13
+                - 16
+            "4": 3.13.5
+            "5": 0.31.0
+            "12": 0.31.0
+            "13": linux-x86_64
+batchsize:
+    value: 128
+cutmix:
+    value: 0
+label_smoothing:
+    value: 0
+mixup:
+    value: 0
+weight_decay:
+    value: 0.0005

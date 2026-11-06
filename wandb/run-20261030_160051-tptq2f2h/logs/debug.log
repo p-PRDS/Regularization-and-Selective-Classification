@@ -1,0 +1,5 @@
+2026-10-30 16:00:51,576 INFO    MainThread:1236496 [wandb_init.py:setup_run_log_directory():740] Logging user logs to /home/pedro-pordeus/regularization_and_sc/wandb/run-20261030_160051-tptq2f2h/logs/debug.log
+2026-10-30 16:00:51,576 INFO    MainThread:1236496 [wandb_init.py:setup_run_log_directory():741] Logging internal logs to /home/pedro-pordeus/regularization_and_sc/wandb/run-20261030_160051-tptq2f2h/logs/debug-internal.log
+2026-10-30 16:00:51,576 INFO    MainThread:1236496 [wandb_init.py:init():784] calling init triggers
+2026-10-30 16:00:51,576 INFO    MainThread:1236496 [wandb_init.py:init():789] wandb.init called with sweep_config: {}
+config: {'batchsize': 128, 'weight_decay': 0.0005, 'label_smoothing': 0.0, 'mixup': 0.0, 'cutmix': 0.0, '_wandb': {}}

@@ -1,0 +1,22 @@
+seed: 42
+batchsize: 128
+valid_prop: 0.1
+folds: 5
+
+scheduler: 
+  __target__: MultiStepLR
+  milestones: [23460, 46920, 62560]
+  gamma: 0.2
+
+optimizer:
+  __target__: torch.optim.SGD
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 5e-4
+
+n_steps: 78200
+warmup_steps: 391
+
+metrics: [Accuracy,  NLL, loss]
+
+

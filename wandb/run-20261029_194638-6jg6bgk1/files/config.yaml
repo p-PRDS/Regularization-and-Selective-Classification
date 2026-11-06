@@ -1,0 +1,49 @@
+_wandb:
+    value:
+        cli_version: 0.31.0
+        e:
+            01a189d8-06a3-7645-bc18-38e89b2d483d:
+                args:
+                    - model.name=shufflenetv2
+                codePath: scripts/cifar100/train.py
+                codePathLocal: scripts/cifar100/train.py
+                executable: /home/pedro-pordeus/regularization_and_sc/.venv/bin/python
+                host: ml8
+                os: Linux-5.15.0-198-generic-x86_64-with-glibc2.35
+                program: /home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py
+                python: CPython 3.13.5
+                root: /home/pedro-pordeus/regularization_and_sc
+                startedAt: "2026-10-29T22:46:38.292936Z"
+                writerId: 01a189d8-06a3-7645-bc18-38e89b2d483d
+        m: []
+        python_version: 3.13.5
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 50
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 50
+                - 53
+            "3":
+                - 13
+                - 16
+            "4": 3.13.5
+            "5": 0.31.0
+            "12": 0.31.0
+            "13": linux-x86_64
+batchsize:
+    value: 128
+cutmix:
+    value: 1
+label_smoothing:
+    value: 0.1
+mixup:
+    value: 1
+weight_decay:
+    value: 0.0005

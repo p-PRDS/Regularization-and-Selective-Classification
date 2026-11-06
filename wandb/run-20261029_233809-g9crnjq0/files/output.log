@@ -1,0 +1,121 @@
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 57, in <module>
+    main()
+    ~~~~^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+    ~~~~~~~~~~^
+        args=args,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+    ~~~~~~~~^
+        run=args.run,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 465, in _run_app
+    run_and_report(
+    ~~~~~~~~~~~~~~^
+        lambda: hydra.multirun(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        )
+        ^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 466, in <lambda>
+    lambda: hydra.multirun(
+            ~~~~~~~~~~~~~~^
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        task_function=task_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/hydra.py", line 162, in multirun
+    ret = sweeper.sweep(arguments=task_overrides)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_sweeper.py", line 177, in sweep
+    results = self.launcher.launch(batch, initial_job_idx=initial_job_idx)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_launcher.py", line 74, in launch
+    ret = run_job(
+        hydra_context=self.hydra_context,
+    ...<3 lines>...
+        job_subdir_key="hydra.sweep.subdir",
+    )
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/core/utils.py", line 189, in run_job
+    ret.return_value = task_function(task_cfg)
+                       ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 47, in main
+    train(model=model, trainloader=trainloader, valloader=valloader,
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         criterion=criterion, optimizer=optimizer, scheduler=scheduler,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+         wb=wb, eval_trainloader=None,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         saving_path=cfg.train.saving_path, file_name=name)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/train.py", line 66, in train
+    output = model(images)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/cifar/architectures/shufflenetv2.py", line 134, in forward
+    x = self.stage3(x)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/cifar/architectures/shufflenetv2.py", line 94, in forward
+    residual = self.residual(residual)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/batchnorm.py", line 173, in forward
+    self.num_batches_tracked.add_(1)  # type: ignore[has-type]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+KeyboardInterrupt
+Exception ignored in atexit callback <bound method OpenTelemetryProxy.shutdown of <wandb.analytics.opentelemetry.opentelemetry_proxy.OpenTelemetryProxy object at 0x7fea336530e0>>:
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/analytics/opentelemetry/opentelemetry_proxy.py", line 818, in shutdown
+    meter_provider.shutdown(timeout_millis=timeout_millis)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/opentelemetry/sdk/metrics/_internal/__init__.py", line 579, in shutdown
+    metric_reader.shutdown(timeout_millis=(deadline_ns - current_ts) / 10**6)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/opentelemetry/sdk/metrics/_internal/export/__init__.py", line 540, in shutdown
+    self._daemon_thread.join(timeout=(deadline_ns - time_ns()) / 10**9)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/threading.py", line 1094, in join
+    self._handle.join(timeout)
+KeyboardInterrupt:
+[2026-10-29 23:47:45,713][opentelemetry.sdk.metrics._internal][WARNING] - shutdown can only be called once

@@ -1,0 +1,40 @@
+model:
+  name: googlenet
+train:
+  seed: 42
+  batchsize: 128
+  valid_prop: 0.1
+  folds: 5
+  n_steps: 78200
+  warmup_steps: 391
+  scheduler:
+    _target_: torch.optim.lr_scheduler.MultiStepLR
+    milestones:
+    - 23460
+    - 46920
+    - 62560
+    gamma: 0.2
+  optimizer:
+    _target_: torch.optim.SGD
+    lr: 0.1
+    momentum: 0.9
+    weight_decay: 0.0005
+  criterion:
+    _target_: torch.nn.CrossEntropyLoss
+    label_smoothing: 0.1
+  mixup: 1.0
+  cutmix: 1.0
+  metrics:
+    Accuracy:
+      _target_: regularization_and_SC.utils.metrics.accuracy
+    NLL:
+      __target__: torch.nn.CrossEntropyLoss
+  wandb:
+    project: RegularizationInSC-Cifar-Classifiers
+    group: ${model.name}_bestClassifier
+    config:
+      batchsize: ${batchsize}
+      weight_decay: ${optimizer.weight_decay}
+      label_smoothing: ${criterion.label_smoothing}
+      mixup: ${mixup}
+      cutmix: ${cutmix}

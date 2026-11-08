@@ -1,0 +1,16 @@
+# @package _global_
+
+defaults:
+  - override /train: classification
+  - override /model: googlenet
+  - _self_
+
+hydra:
+mode: MULTIRUN
+sweeper:
+  params:
+      train.loss.label_smoothing: 0,0.1
+      train.mixup: 0,1.0
+      train.cutmix: 0,1.0
+      train.optimizer.weight_decay: 0,5e-4
+      train.fold: 0

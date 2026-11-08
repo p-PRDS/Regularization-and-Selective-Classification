@@ -1,0 +1,2 @@
+_target_: regularization_and_sc.cifar.utils.get_network
+netname: googlenet

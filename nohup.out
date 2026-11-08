@@ -440,3 +440,118 @@ KeyboardInterrupt:
 [2026-10-30 03:24:31,107][HYDRA] 	#2 : model.name=densenet121
 /home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'config': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
   warnings.warn(msg, UserWarning)
+[2026-11-06 20:00:56,729][HYDRA] Launching 16 jobs locally
+[2026-11-06 20:00:56,729][HYDRA] 	#0 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:00:57,523][HYDRA] 	#1 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:00:58,313][HYDRA] 	#2 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=1.0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:00:59,100][HYDRA] 	#3 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=1.0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:00:59,895][HYDRA] 	#4 : train.loss.label_smoothing=0 train.mixup=1.0 train.cutmix=0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:00,681][HYDRA] 	#5 : train.loss.label_smoothing=0 train.mixup=1.0 train.cutmix=0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:01,474][HYDRA] 	#6 : train.loss.label_smoothing=0 train.mixup=1.0 train.cutmix=1.0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:02,258][HYDRA] 	#7 : train.loss.label_smoothing=0 train.mixup=1.0 train.cutmix=1.0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:03,048][HYDRA] 	#8 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:03,838][HYDRA] 	#9 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:04,635][HYDRA] 	#10 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=1.0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:05,432][HYDRA] 	#11 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=1.0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:06,216][HYDRA] 	#12 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:07,011][HYDRA] 	#13 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:07,804][HYDRA] 	#14 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=1.0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:01:08,594][HYDRA] 	#15 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=1.0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+Error executing job with overrides: ['train.loss.label_smoothing=0', 'train.mixup=0', 'train.cutmix=0', 'train.optimizer.weight_decay=0', 'train.fold=0', '+experiments=train_best_classifier_grid_search']
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 51, in main
+    WandB = OmegaConf.to_container(cfg.train.wandb, resolve=True)
+omegaconf.errors.InterpolationKeyError: Interpolation key 'cfg.train.fold' not found
+    full_key: train.wandb.group
+    object_type=dict
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+[2026-11-06 20:02:14,243][HYDRA] Launching 16 jobs locally
+[2026-11-06 20:02:14,243][HYDRA] 	#0 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 20:55:58,930][HYDRA] 	#1 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 21:49:57,793][HYDRA] 	#2 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=1.0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 22:44:09,160][HYDRA] 	#3 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=1.0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-06 23:38:19,123][HYDRA] 	#4 : train.loss.label_smoothing=0 train.mixup=1.0 train.cutmix=0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 00:32:42,629][HYDRA] 	#5 : train.loss.label_smoothing=0 train.mixup=1.0 train.cutmix=0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 01:26:57,294][HYDRA] 	#6 : train.loss.label_smoothing=0 train.mixup=1.0 train.cutmix=1.0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 02:03:52,449][opentelemetry.exporter.otlp.proto.http.metric_exporter][WARNING] - Transient error Service Unavailable encountered while exporting metrics batch, retrying in 0.97s.
+[2026-11-07 02:21:16,759][HYDRA] 	#7 : train.loss.label_smoothing=0 train.mixup=1.0 train.cutmix=1.0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 02:56:05,836][opentelemetry.exporter.otlp.proto.http.metric_exporter][WARNING] - Transient error Service Unavailable encountered while exporting metrics batch, retrying in 1.03s.
+[2026-11-07 03:15:31,157][HYDRA] 	#8 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 04:09:51,679][HYDRA] 	#9 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 05:04:05,751][HYDRA] 	#10 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=1.0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 05:58:21,887][HYDRA] 	#11 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=1.0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 06:10:50,902][opentelemetry.exporter.otlp.proto.http.metric_exporter][WARNING] - Transient error Service Unavailable encountered while exporting metrics batch, retrying in 1.14s.
+[2026-11-07 06:52:38,258][HYDRA] 	#12 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 07:46:56,278][HYDRA] 	#13 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 08:41:11,624][HYDRA] 	#14 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=1.0 train.optimizer.weight_decay=0 train.fold=0 +experiments=train_best_classifier_grid_search
+[2026-11-07 09:35:33,358][HYDRA] 	#15 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=1.0 train.optimizer.weight_decay=0.0005 train.fold=0 +experiments=train_best_classifier_grid_search
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+            ~~~~~~~~~^
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        task_function=task_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/hydra.py", line 105, in run
+    cfg = self.compose_config(
+        config_name=config_name,
+    ...<2 lines>...
+        run_mode=RunMode.RUN,
+    )
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/hydra.py", line 594, in compose_config
+    cfg = self.config_loader.load_configuration(
+        config_name=config_name,
+    ...<3 lines>...
+        validate_sweep_overrides=validate_sweep_overrides,
+    )
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/config_loader_impl.py", line 142, in load_configuration
+    return self._load_configuration_impl(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        validate_sweep_overrides=validate_sweep_overrides,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/config_loader_impl.py", line 273, in _load_configuration_impl
+    OmegaConf.set_readonly(cfg.hydra, False)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/omegaconf/omegaconf.py", line 506, in set_readonly
+    conf._set_flag("readonly", value)
+    ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '_set_flag'
+[2026-11-07 21:37:04,487][HYDRA] Launching 20 jobs locally
+[2026-11-07 21:37:04,487][HYDRA] 	#0 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=0 +experiments/best_classifier_search=_label_smoothing
+[2026-11-07 22:31:11,844][HYDRA] 	#1 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=1 +experiments/best_classifier_search=_label_smoothing
+[2026-11-07 22:31:20,166][opentelemetry.exporter.otlp.proto.http.metric_exporter][WARNING] - Transient error Service Unavailable encountered while exporting metrics batch, retrying in 0.87s.
+[2026-11-07 23:25:27,372][HYDRA] 	#2 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=2 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 00:19:43,124][HYDRA] 	#3 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=3 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 00:29:12,417][HYDRA] Launching 20 jobs locally
+[2026-11-08 00:29:12,417][HYDRA] 	#0 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=0 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 01:23:14,384][HYDRA] 	#1 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=1 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 02:17:23,422][HYDRA] 	#2 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=2 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 03:11:33,669][HYDRA] 	#3 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=3 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 04:03:05,844][opentelemetry.exporter.otlp.proto.http.metric_exporter][WARNING] - Transient error Service Unavailable encountered while exporting metrics batch, retrying in 0.88s.
+[2026-11-08 04:05:47,175][HYDRA] 	#4 : train.loss.label_smoothing=0 train.mixup=0 train.cutmix=0 train.fold=4 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 04:59:59,221][HYDRA] 	#5 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.fold=0 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 05:54:10,438][HYDRA] 	#6 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.fold=1 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 06:48:23,322][HYDRA] 	#7 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.fold=2 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 07:17:50,607][opentelemetry.exporter.otlp.proto.http.metric_exporter][WARNING] - Transient error Service Unavailable encountered while exporting metrics batch, retrying in 1.10s.
+[2026-11-08 07:42:33,532][HYDRA] 	#8 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.fold=3 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 08:36:42,406][HYDRA] 	#9 : train.loss.label_smoothing=0.1 train.mixup=0 train.cutmix=0 train.fold=4 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 09:30:48,720][HYDRA] 	#10 : train.loss.label_smoothing=0.2 train.mixup=0 train.cutmix=0 train.fold=0 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 10:25:06,442][HYDRA] 	#11 : train.loss.label_smoothing=0.2 train.mixup=0 train.cutmix=0 train.fold=1 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 11:19:09,901][HYDRA] 	#12 : train.loss.label_smoothing=0.2 train.mixup=0 train.cutmix=0 train.fold=2 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 12:13:18,174][HYDRA] 	#13 : train.loss.label_smoothing=0.2 train.mixup=0 train.cutmix=0 train.fold=3 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 13:07:28,458][HYDRA] 	#14 : train.loss.label_smoothing=0.2 train.mixup=0 train.cutmix=0 train.fold=4 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 14:01:33,396][HYDRA] 	#15 : train.loss.label_smoothing=0.3 train.mixup=0 train.cutmix=0 train.fold=0 +experiments/best_classifier_search=_label_smoothing
+[2026-11-08 14:55:45,260][HYDRA] 	#16 : train.loss.label_smoothing=0.3 train.mixup=0 train.cutmix=0 train.fold=1 +experiments/best_classifier_search=_label_smoothing

@@ -1,74 +1,43 @@
-data_seed: 42
-model_seed: 42
-dataloader_seed: 42
+defaults:
+  - loss: CrossEntropy
+  - optimizer: SGD
+  - scheduler: MultiStepLR
+  - seeds: default
+  - wandb: estimators
+  - metrics: estimators
+  - _self_
 
 batchsize: 128
 valid_prop: 0.1
-folds: 5
+fold: 0
 n_steps: 10560
 n_steps_for_eval: 352
 warmup_steps: 352
 
 scheduler: 
-  _target_: torch.optim.lr_scheduler.MultiStepLR
   milestones: [3168, 6336, 9504]
   gamma: 0.2
-
-optimizer:
-  _target_: torch.optim.SGD
-  lr: 0.1
-  momentum: 0.9
-  weight_decay: 5e-4
-
-criterion: 
-  _target_: torch.nn.CrossEntropyLoss
-  label_smoothing: 0.0
 
 mixup: 0.0
 cutmix: 0.0
 
-classifier:
-  path: ${paths.models}/cifar/classifiers/${model.name}
-  name: ${model.name}_bestClassifier
-  checkpoint: LastStep
+classifier: ${model.netname}_bestClassifier_fold_${train.fold}_LastStep
 
-pretrained_weights:
-  path: ${paths.models}/cifar/classifiers/${model.name}/weights
-  name: ${model.name}_bestClassifier
-  checkpoint: LastStep
-
-metrics_dict:
+metrics:
   val: 
-    Accuracy:
-      _target_: regularization_and_sc.utils.metrics.accuracy
-      _partial_: true 
-    NLL:
-      _target_: torch.nn.CrossEntropyLoss
-    AURC:
-      _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
-      _partial_: true
     FC-AURC:
-      _target_: regularization_and_sc.utils.metrics.FC_AURC 
-  train:
-    Accuracy:
-      _target_: regularization_and_sc.utils.metrics.accuracy
-      _partial_: true 
-    NLL:
-      _target_: torch.nn.CrossEntropyLoss
-    AURC:
-      _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
-      _partial_: true
-    FC-AURC:
-      _target_: regularization_and_sc.utils.metrics.FC_AURC
-
-wandb: 
-  project: RegularizationInSC-Cifar-Estimators
-  group: ${model.name}_FineTuningLastLayer
-  config:
-    batchsize: ${train.batchsize}
-    weight_decay: ${train.optimizer.weight_decay}
-    label_smoothing: ${train.criterion.label_smoothing}
-    mixup: ${train.mixup}
-    cutmix: ${train.cutmix}
+      classifier_logits_path: ${paths.models}/cifar/classifiers/${model.netname}/logits/val/${train.classifier}.pt
   
-saving_path: ${paths.models}/cifar/estimators/finetuning/${model.name}
+  train:
+    FC-AURC:
+      classifier_logits_path: ${paths.models}/cifar/classifiers/${model.netname}/logits/train/${train.classifier}.pt
+
+set_model:
+  - _target_: torch.nn.Module.load_state_dict
+    state_dict: 
+      _target_: torch.load
+      f: ${paths.models}/cifar/classifiers/${model.netname}/weights/${train.classifier}.pt
+  - _target_: regularization_and_sc.fine_tuning.utils.freeze_model_but_lastlayer
+
+name: ${model.netname}_FineTuningLastLayer
+saving_path: ${paths.models}/cifar/estimators/finetuning/${model.netname}

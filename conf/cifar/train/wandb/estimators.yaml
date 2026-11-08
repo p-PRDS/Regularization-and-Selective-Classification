@@ -1,0 +1,9 @@
+project: RegularizationInSC-Cifar-Estimators
+group: ${train.name}
+name: ${train.wandb.group}_${train.fold}
+config:
+  batchsize: ${train.batchsize}
+  weight_decay: ${train.optimizer.weight_decay}
+  label_smoothing: ${train.loss.label_smoothing}
+  mixup: ${train.mixup}
+  cutmix: ${train.cutmix}

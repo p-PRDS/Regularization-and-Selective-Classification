@@ -5,7 +5,7 @@ import torch
 from torchvision.transforms import v2
 from regularization_and_sc.eval import test, evaluate_on_dataloader_dict
 from .cifar.utils import WarmUpLR
-from .fine_tuning.utils import set_train_mode, freeze_modules
+from .fine_tuning.utils import set_train_mode, freeze_modules, get_frozen_modules_from_grad
 
 def apply_mixup_cutmix(images, labels, mixup=0, cutmix=0):
     if mixup: 
@@ -26,7 +26,7 @@ def train(model, trainloader, valloader, criterion, optimizer, scheduler=None, w
         os.makedirs(f'{saving_path}/weights')
     dev = 'cuda' if torch.cuda.is_available() else 'cpu'
     model.to(dev)
-    freeze_modules(frozen_modules)
+    frozen_modules = get_frozen_modules_from_grad(model)
     eval_loaders = {'val':valloader, 'train':eval_trainloader} if eval_trainloader else {'val':valloader}
     best = {'Accuracy':0, 'NLL':9999, 'FC-AURC':1, 'AURC':1}
 

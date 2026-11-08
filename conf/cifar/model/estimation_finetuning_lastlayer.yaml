@@ -1,6 +1,0 @@
-name: googlenet
-
-frozen_modules:
-  _target_: regularization_and_sc.fine_tuning.utils.get_frozen_children_modules
-  _partial_: true
-  n_unfrozen_layers: 1

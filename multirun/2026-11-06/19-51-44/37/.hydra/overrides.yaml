@@ -1,0 +1,6 @@
+- train.loss.label_smoothing=0
+- train.mixup=1.0
+- train.cutmix=1.0
+- train.optimizer.weight_decay=0.0005
+- train.fold=2
+- +experiments=train_best_classifier_grid_search

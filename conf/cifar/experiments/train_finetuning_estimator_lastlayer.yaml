@@ -1,0 +1,6 @@
+# @package _global_
+
+defaults:
+  - override /train: estimation_finetuning_lastlayer
+  - override /model: googlenet
+  - _self_

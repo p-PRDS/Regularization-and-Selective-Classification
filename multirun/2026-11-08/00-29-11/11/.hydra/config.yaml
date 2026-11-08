@@ -1,0 +1,97 @@
+model:
+  _target_: regularization_and_sc.cifar.utils.get_network
+  netname: googlenet
+train:
+  loss:
+    _target_: torch.nn.CrossEntropyLoss
+    label_smoothing: 0.2
+  optimizer:
+    _target_: torch.optim.SGD
+    lr: 0.1
+    momentum: 0.9
+    weight_decay: 0.0005
+  scheduler:
+    _target_: torch.optim.lr_scheduler.MultiStepLR
+    milestones:
+    - 21120
+    - 42240
+    - 63360
+    gamma: 0.2
+  seeds:
+    dataset: 42
+    weights: 42
+    dataloader: 42
+  wandb:
+    project: RegularizationInSC-Cifar-Classifiers
+    name: ${train.name}
+    config:
+      batchsize: ${train.batchsize}
+      weight_decay: ${train.optimizer.weight_decay}
+      label_smoothing: ${train.loss.label_smoothing}
+      mixup: ${train.mixup}
+      cutmix: ${train.cutmix}
+    group: ${model.netname}_LS_${train.loss.label_smoothing}_MU_${train.mixup}_CM_${train.cutmix}_WD_${train.optimizer.weight_decay}
+  metrics:
+    val:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+  fold: 1
+  batchsize: 128
+  valid_prop: 0.1
+  n_steps: 70400
+  n_steps_for_eval: 352
+  warmup_steps: 352
+  mixup: 0
+  cutmix: 0
+  name: ${model.netname}_LS_${train.loss.label_smoothing}_MU_${train.mixup}_CM_${train.cutmix}_WD_${train.optimizer.weight_decay}_fold_${train.fold}
+  saving_path: ${paths.models}/cifar/classifiers/${model.netname}
+eval:
+  model:
+    path: ${paths.models}/cifar/classifiers/${model.name}
+    weights_name: ${model.name}_bestClassifier
+    checkpoint: LastStep
+  data_seed: 42
+  valid_prop: 0.1
+  folds:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  metrics_dict:
+    test:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+    val:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+    train:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+paths:
+  project: /home/pedro-pordeus/regularization_and_sc
+  models: ${paths.project}/models

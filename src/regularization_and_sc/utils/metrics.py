@@ -311,3 +311,13 @@ class FC_AURC():
         loss = (self.classifier_preds != labels).float()
         conf = logits.softmax(-1)[torch.arange(len(logits)), self.classifier_preds]
         return AURC(loss, conf)
+
+
+from .pNormEstimators import optimize_maxlogit, pNormMaxLogit
+def pNormMaxLogit_AURC(logits, labels, val_logits_path, val_labels_path):
+    val_logits = torch.load(val_logits_path)
+    val_labels = torch.load(val_labels_path)
+    val_risk = wrong_class(val_logits, val_labels)
+    p = optimize_maxlogit.p(val_logits, val_risk)
+    conf = pNormMaxLogit(logits, p)
+    return AURC_fromlogits(logits, labels, conf)

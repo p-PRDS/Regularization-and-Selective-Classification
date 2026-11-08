@@ -1,0 +1,10 @@
+defaults:
+  - eval: classifier
+  - model: resnet50
+  - _self_
+
+fold: 0
+
+paths:
+  project: /home/pedro-pordeus/regularization_and_sc
+  models: ${paths.project}/models

@@ -1,0 +1,73 @@
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 66, in <module>
+    main()
+    ~~~~^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+    ~~~~~~~~~~^
+        args=args,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+    ~~~~~~~~^
+        run=args.run,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 465, in _run_app
+    run_and_report(
+    ~~~~~~~~~~~~~~^
+        lambda: hydra.multirun(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        )
+        ^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 466, in <lambda>
+    lambda: hydra.multirun(
+            ~~~~~~~~~~~~~~^
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        task_function=task_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/hydra.py", line 162, in multirun
+    ret = sweeper.sweep(arguments=task_overrides)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_sweeper.py", line 177, in sweep
+    results = self.launcher.launch(batch, initial_job_idx=initial_job_idx)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_launcher.py", line 74, in launch
+    ret = run_job(
+        hydra_context=self.hydra_context,
+    ...<3 lines>...
+        job_subdir_key="hydra.sweep.subdir",
+    )
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/core/utils.py", line 189, in run_job
+    ret.return_value = task_function(task_cfg)
+                       ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 55, in main
+    train(model=model,
+    ~~~~~^^^^^^^^^^^^^
+        trainloader=trainloader, valloader=valloader,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        wb=wb, eval_trainloader=eval_trainloader,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        saving_path=cfg.train.saving_path, file_name=cfg.train.name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/train.py", line 45, in train
+    images = images.to(dev)
+KeyboardInterrupt

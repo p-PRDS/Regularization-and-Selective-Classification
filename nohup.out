@@ -555,3 +555,282 @@ AttributeError: 'NoneType' object has no attribute '_set_flag'
 [2026-11-08 13:07:28,458][HYDRA] 	#14 : train.loss.label_smoothing=0.2 train.mixup=0 train.cutmix=0 train.fold=4 +experiments/best_classifier_search=_label_smoothing
 [2026-11-08 14:01:33,396][HYDRA] 	#15 : train.loss.label_smoothing=0.3 train.mixup=0 train.cutmix=0 train.fold=0 +experiments/best_classifier_search=_label_smoothing
 [2026-11-08 14:55:45,260][HYDRA] 	#16 : train.loss.label_smoothing=0.3 train.mixup=0 train.cutmix=0 train.fold=1 +experiments/best_classifier_search=_label_smoothing
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/regularization_and_SC/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+Ambiguous value for argument '+experiments/best_classifier_search=_mixup,_cutmix'
+1. To use it as a list, use key=[value1,value2]
+2. To use it as string, quote the value: key=\'value1,value2\'
+3. To sweep over it, add --multirun to your command line
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/regularization_and_SC/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+In 'config': Could not find 'model/estimation_finetuning_lastlayer'
+
+Available options in 'model':
+	googlenet
+Config search path:
+	provider=hydra, path=pkg://hydra.conf
+	provider=main, path=file:///home/pedro-pordeus/regularization_and_sc/conf/cifar
+	provider=schema, path=structured://
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/regularization_and_SC/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+In 'config': Could not find 'model/estimation_finetuning_lastlayer'
+
+Available options in 'model':
+	googlenet
+Config search path:
+	provider=hydra, path=pkg://hydra.conf
+	provider=main, path=file:///home/pedro-pordeus/regularization_and_sc/conf/cifar
+	provider=schema, path=structured://
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/regularization_and_SC/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[2026-11-08 22:28:32,074][HYDRA] Launching 2 jobs locally
+[2026-11-08 22:28:32,074][HYDRA] 	#0 : +experiments/best_classifier_search=_mixup
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 66, in <module>
+    main()
+    ~~~~^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+    ~~~~~~~~~~^
+        args=args,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+    ~~~~~~~~^
+        run=args.run,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 465, in _run_app
+    run_and_report(
+    ~~~~~~~~~~~~~~^
+        lambda: hydra.multirun(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        )
+        ^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 466, in <lambda>
+    lambda: hydra.multirun(
+            ~~~~~~~~~~~~~~^
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        task_function=task_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/hydra.py", line 162, in multirun
+    ret = sweeper.sweep(arguments=task_overrides)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_sweeper.py", line 177, in sweep
+    results = self.launcher.launch(batch, initial_job_idx=initial_job_idx)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_launcher.py", line 74, in launch
+    ret = run_job(
+        hydra_context=self.hydra_context,
+    ...<3 lines>...
+        job_subdir_key="hydra.sweep.subdir",
+    )
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/core/utils.py", line 189, in run_job
+    ret.return_value = task_function(task_cfg)
+                       ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 55, in main
+    train(model=model,
+    ~~~~~^^^^^^^^^^^^^
+        trainloader=trainloader, valloader=valloader,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        wb=wb, eval_trainloader=eval_trainloader,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        saving_path=cfg.train.saving_path, file_name=cfg.train.name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/train.py", line 45, in train
+    images = images.to(dev)
+KeyboardInterrupt
+Exception ignored in atexit callback <function _start_and_connect_service.<locals>.teardown_atexit at 0x7fe4d1ad1c60>:
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/sdk/lib/service/service_connection.py", line 79, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/sdk/lib/service/service_connection.py", line 450, in teardown
+    return self._proc.join()
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/sdk/lib/service/service_process.py", line 101, in join
+    return self._process.wait()
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/subprocess.py", line 1280, in wait
+    return self._wait(timeout=timeout)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/subprocess.py", line 2066, in _wait
+    (pid, sts) = self._try_wait(0)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/subprocess.py", line 2024, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt: 
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/regularization_and_SC/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[2026-11-08 22:30:02,272][HYDRA] Launching 5 jobs locally
+[2026-11-08 22:30:02,272][HYDRA] 	#0 : train.loss.label_smoothing=0.1 train.mixup=0.2 train.cutmix=0.0 train.fold=0 +experiments/best_classifier_search=_mixup
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 66, in <module>
+    main()
+    ~~~~^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+    ~~~~~~~~~~^
+        args=args,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+    ~~~~~~~~^
+        run=args.run,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 465, in _run_app
+    run_and_report(
+    ~~~~~~~~~~~~~~^
+        lambda: hydra.multirun(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        )
+        ^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/utils.py", line 466, in <lambda>
+    lambda: hydra.multirun(
+            ~~~~~~~~~~~~~~^
+        config_name=config_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        task_function=task_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        overrides=overrides,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/hydra.py", line 162, in multirun
+    ret = sweeper.sweep(arguments=task_overrides)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_sweeper.py", line 177, in sweep
+    results = self.launcher.launch(batch, initial_job_idx=initial_job_idx)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/_internal/core_plugins/basic_launcher.py", line 74, in launch
+    ret = run_job(
+        hydra_context=self.hydra_context,
+    ...<3 lines>...
+        job_subdir_key="hydra.sweep.subdir",
+    )
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/hydra/core/utils.py", line 189, in run_job
+    ret.return_value = task_function(task_cfg)
+                       ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/scripts/cifar100/train.py", line 55, in main
+    train(model=model,
+    ~~~~~^^^^^^^^^^^^^
+        trainloader=trainloader, valloader=valloader,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        wb=wb, eval_trainloader=eval_trainloader,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        saving_path=cfg.train.saving_path, file_name=cfg.train.name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/train.py", line 48, in train
+    output = model(images)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/cifar/architectures/googlenet.py", line 110, in forward
+    x = self.b3(x)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/src/regularization_and_sc/cifar/architectures/googlenet.py", line 62, in forward
+    return torch.cat([self.b1(x), self.b2(x), self.b3(x), self.b4(x)], dim=1)
+                                  ~~~~~~~^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 554, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 549, in _conv_forward
+    return F.conv2d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+KeyboardInterrupt
+Exception ignored in atexit callback <bound method OpenTelemetryProxy.shutdown of <wandb.analytics.opentelemetry.opentelemetry_proxy.OpenTelemetryProxy object at 0x7f90239274d0>>:
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/analytics/opentelemetry/opentelemetry_proxy.py", line 818, in shutdown
+    meter_provider.shutdown(timeout_millis=timeout_millis)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/opentelemetry/sdk/metrics/_internal/__init__.py", line 579, in shutdown
+    metric_reader.shutdown(timeout_millis=(deadline_ns - current_ts) / 10**6)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/opentelemetry/sdk/metrics/_internal/export/__init__.py", line 540, in shutdown
+    self._daemon_thread.join(timeout=(deadline_ns - time_ns()) / 10**9)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/threading.py", line 1094, in join
+    self._handle.join(timeout)
+KeyboardInterrupt: 
+[2026-11-08 22:30:57,516][opentelemetry.sdk.metrics._internal][WARNING] - shutdown can only be called once
+Exception ignored in atexit callback <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f9023738e00>:
+Traceback (most recent call last):
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/sdk/lib/service/service_connection.py", line 79, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/sdk/lib/service/service_connection.py", line 450, in teardown
+    return self._proc.join()
+  File "/home/pedro-pordeus/regularization_and_sc/.venv/lib/python3.13/site-packages/wandb/sdk/lib/service/service_process.py", line 101, in join
+    return self._process.wait()
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/subprocess.py", line 1293, in wait
+    self._wait(timeout=sigint_timeout)
+  File "/home/pedro-pordeus/miniconda3/lib/python3.13/subprocess.py", line 2060, in _wait
+    time.sleep(delay)
+KeyboardInterrupt: 
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/regularization_and_SC/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[2026-11-08 22:32:53,132][HYDRA] Launching 10 jobs locally
+[2026-11-08 22:32:53,132][HYDRA] 	#0 : +experiments/best_classifier_search=_mixup train.fold=0
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/regularization_and_SC/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[2026-11-08 23:25:32,640][HYDRA] Launching 10 jobs locally
+[2026-11-08 23:25:32,640][HYDRA] 	#0 : +experiments/best_classifier_search=_mixup train.fold=0
+[2026-11-09 00:19:40,316][HYDRA] 	#1 : +experiments/best_classifier_search=_mixup train.fold=1
+[2026-11-09 01:13:43,604][HYDRA] 	#2 : +experiments/best_classifier_search=_mixup train.fold=2
+[2026-11-09 02:07:44,973][HYDRA] 	#3 : +experiments/best_classifier_search=_mixup train.fold=3
+[2026-11-09 03:01:52,076][HYDRA] 	#4 : +experiments/best_classifier_search=_mixup train.fold=4
+[2026-11-09 03:55:53,556][HYDRA] 	#5 : +experiments/best_classifier_search=_cutmix train.fold=0
+[2026-11-09 04:49:58,784][HYDRA] 	#6 : +experiments/best_classifier_search=_cutmix train.fold=1
+[2026-11-09 05:44:00,755][HYDRA] 	#7 : +experiments/best_classifier_search=_cutmix train.fold=2
+[2026-11-09 06:38:01,665][HYDRA] 	#8 : +experiments/best_classifier_search=_cutmix train.fold=3
+[2026-11-09 07:32:06,225][HYDRA] 	#9 : +experiments/best_classifier_search=_cutmix train.fold=4
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/regularization_and_SC/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[2026-11-09 10:28:41,791][HYDRA] Launching 5 jobs locally
+[2026-11-09 10:28:41,791][HYDRA] 	#0 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=1.0 train.fold=0 +experiments=train_deep_ensemble
+[2026-11-09 11:22:44,304][HYDRA] 	#1 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=1.0 train.fold=1 +experiments=train_deep_ensemble
+[2026-11-09 11:57:07,440][opentelemetry.exporter.otlp.proto.http.metric_exporter][WARNING] - Transient error Service Unavailable encountered while exporting metrics batch, retrying in 0.89s.
+[2026-11-09 12:16:55,927][HYDRA] 	#2 : train.loss.label_smoothing=0.1 train.mixup=1.0 train.cutmix=1.0 train.fold=2 +experiments=train_deep_ensemble

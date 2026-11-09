@@ -1,0 +1,5 @@
+- train.loss.label_smoothing=0.1
+- train.mixup=1.0
+- train.cutmix=1.0
+- train.fold=1
+- +experiments=train_deep_ensemble

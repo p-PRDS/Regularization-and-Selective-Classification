@@ -1,6 +1,6 @@
 defaults:
-  - model: estimation_finetuning_lastlayer
-  - train: estimation_finetuning_lastlayer
+  - model: googlenet
+  - train: classification
   - eval: classification
   - _self_ 
   

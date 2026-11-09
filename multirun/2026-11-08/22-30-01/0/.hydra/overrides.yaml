@@ -1,0 +1,5 @@
+- train.loss.label_smoothing=0.1
+- train.mixup=0.2
+- train.cutmix=0.0
+- train.fold=0
+- +experiments/best_classifier_search=_mixup

@@ -1,0 +1,20 @@
+# @package _global_
+defaults:
+  - override /train: classification
+  - override /train/seeds: deep_ensemble
+  - override /model: googlenet
+  - _self_
+
+train:
+  name: ${model.netname}_LS_${train.loss.label_smoothing}_MU_${train.mixup}_CM_${train.cutmix}_WD_${train.optimizer.weight_decay}_DeepEnsemble_fold_${train.fold}
+  wandb:
+    group: ${model.netname}_LS_${train.loss.label_smoothing}_MU_${train.mixup}_CM_${train.cutmix}_WD_${train.optimizer.weight_decay}_DeepEnsemble
+
+hydra:
+  mode: MULTIRUN
+  sweeper:
+    params:
+        train.loss.label_smoothing: 0.1
+        train.mixup: 1.0
+        train.cutmix: 1.0
+        train.fold: 0,1,2,3,4

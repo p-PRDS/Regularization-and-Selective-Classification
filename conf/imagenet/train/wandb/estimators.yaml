@@ -1,0 +1,9 @@
+project: RegularizationInSC-ImageNet-Estimators
+group: ${train.name}
+name: ${train.wandb.group}_${fold}
+config:
+  batchsize: ${train.trainloader.batch_size}
+  weight_decay: ${train.optimizer.weight_decay}
+  label_smoothing: ${train.loss.label_smoothing}
+  mixup: ${train.mixup}
+  cutmix: ${train.cutmix}

@@ -1,0 +1,45 @@
+eval:
+  metrics:
+    test:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+      pNormMaxLogit-AURC:
+        _target_: regularization_and_sc.utils.metrics.pNormMaxLogit_AURC
+        val_logits_path: ${eval.model.path}/logits/val/${eval.model.weights_name}_fold_${fold}.pt
+        val_labels_path: ${eval.model.path}/labels/val_labels_fold_${fold}.pt
+        _partial_: true
+    val:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+  loaders:
+    val:
+      _target_: regularization_and_sc.imagenet.data.get_dataloader
+      split: val
+      val_split_seed: ${fold}
+    test:
+      _target_: regularization_and_sc.imagenet.data.get_dataloader
+      split: test
+      val_split_seed: ${fold}
+  model:
+    path: ${paths.models}/imagenet/classifiers/${model.name}
+    weights_name: ${model.name}_${model.weights}
+model:
+  _target_: torchvision.models.get_model
+  name: resnet50
+  weights: DEFAULT
+fold: 0
+paths:
+  project: /home/pedro-pordeus/regularization_and_sc
+  models: ${paths.project}/models

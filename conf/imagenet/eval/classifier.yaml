@@ -1,0 +1,19 @@
+defaults:
+  - metrics: classifier
+  - _self_
+
+loaders:
+  val:
+    _target_: regularization_and_sc.imagenet.data.get_dataloader
+    split: val
+    val_split_seed: ${fold}
+
+  test:
+    _target_: regularization_and_sc.imagenet.data.get_dataloader
+    split: test
+    val_split_seed: ${fold}
+
+
+model:
+  path: ${paths.models}/imagenet/classifiers/${model.name}
+  weights_name: ${model.name}_${model.weights}

@@ -6,22 +6,23 @@ from torchvision.transforms import v2
 from regularization_and_sc.eval import test, evaluate_on_dataloader_dict
 from .cifar.utils import WarmUpLR
 from .fine_tuning.utils import set_train_mode, freeze_modules, get_frozen_modules_from_grad
+import time
 
-def apply_mixup_cutmix(images, labels, mixup=0, cutmix=0):
+def apply_mixup_cutmix(images, labels, mixup=0, cutmix=0, num_classes=100):
     if mixup: 
         if cutmix: 
-            preproc = v2.RandomChoice([v2.CutMix(alpha=cutmix,num_classes=100), v2.MixUp(alpha=mixup,num_classes=100)])
+            preproc = v2.RandomChoice([v2.CutMix(alpha=cutmix,num_classes=num_classes), v2.MixUp(alpha=mixup,num_classes=num_classes)])
         else:
-            preproc = v2.MixUp(alpha=mixup,num_classes=100)
+            preproc = v2.MixUp(alpha=mixup,num_classes=num_classes)
     elif cutmix:
-        preproc = v2.CutMix(alpha=cutmix,num_classes=100)
+        preproc = v2.CutMix(alpha=cutmix,num_classes=num_classes)
     else:
         return images, labels
     return preproc(images, labels)
 
 def train(model, trainloader, valloader, criterion, optimizer, scheduler=None, warmup_steps=0,
         cutmix=0, mixup=0, n_steps=100, n_steps_for_eval=100, metrics_dict:dict=None, wb=None, eval_trainloader=None,
-        saving_path='.', file_name='model', frozen_modules=[]):
+        saving_path='.', file_name='model', frozen_modules=[],num_classes=100):
     if not os.path.exists(f'{saving_path}/weights'):
         os.makedirs(f'{saving_path}/weights')
     dev = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -78,5 +79,7 @@ def train(model, trainloader, valloader, criterion, optimizer, scheduler=None, w
                         best['AURC'] = log_dicts['val AURC']
                 set_train_mode(model, frozen_modules)
             if scheduler and step >= warmup_steps: scheduler.step()
+            if step >- n_steps: break
+
     torch.save(model.state_dict(), f'{saving_path}/weights/{file_name}_LastStep.pt')
     if wb: wb.finish()

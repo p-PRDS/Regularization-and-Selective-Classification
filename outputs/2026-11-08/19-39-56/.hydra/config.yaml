@@ -1,0 +1,31 @@
+eval:
+  metrics:
+    test:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+    val:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+  model:
+    path: ${paths.models}/imagenet/classifiers/${model.name}
+    weights_name: ${model.name}_${model.weights}
+model:
+  _target_: torchvision.models.get_model
+  name: resnet50
+  weights: DEFAULT
+fold: 0
+paths:
+  project: /home/pedro-pordeus/regularization_and_sc
+  models: ${paths.project}/models

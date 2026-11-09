@@ -1,0 +1,9 @@
+val:
+  Accuracy:
+    _target_: regularization_and_sc.utils.metrics.accuracy
+    _partial_: true 
+  NLL:
+    _target_: torch.nn.CrossEntropyLoss
+  AURC:
+    _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+    _partial_: true

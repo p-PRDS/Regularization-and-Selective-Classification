@@ -1,0 +1,71 @@
+train:
+  loss:
+    _target_: torch.nn.CrossEntropyLoss
+    label_smoothing: 0
+  optimizer:
+    _target_: torch.optim.SGD
+    lr: 0.1
+    momentum: 0.9
+    weight_decay: 0.0005
+  scheduler:
+    _target_: torch.optim.lr_scheduler.MultiStepLR
+    milestones:
+    - 3168
+    - 6336
+    - 9504
+    gamma: 0.2
+  seeds:
+    dataset: 42
+    weights: 42
+    dataloader: 42
+  wandb:
+    project: RegularizationInSC-ImageNet-Estimators
+    group: ${train.name}
+    name: ${train.wandb.group}_${fold}
+    config:
+      batchsize: ${train.trainloader.batchsize}
+      weight_decay: ${train.optimizer.weight_decay}
+      label_smoothing: ${train.loss.label_smoothing}
+      mixup: ${train.mixup}
+      cutmix: ${train.cutmix}
+  metrics:
+    val:
+      Accuracy:
+        _target_: regularization_and_sc.utils.metrics.accuracy
+        _partial_: true
+      NLL:
+        _target_: torch.nn.CrossEntropyLoss
+      AURC:
+        _target_: regularization_and_sc.utils.metrics.AURC_fromlogits
+        _partial_: true
+      FC-AURC:
+        _target_: regularization_and_sc.utils.metrics.FC_AURC
+        classifier_logits_path: ${paths.models}/imagenet/classifiers/${model.name}/logits/val/${train.classifier}_fold_${fold}.pt
+  num_classes: 1000
+  n_steps: 10560
+  n_steps_for_eval: 352
+  warmup_steps: 352
+  valloader:
+    _target_: regularization_and_sc.imagenet.data.get_dataloader
+    split: val
+    val_split_seed: ${fold}
+  trainloader:
+    _target_: regularization_and_sc.imagenet.data.get_dataloader
+    split: train
+    train_size: 10000
+    batch_size: 256
+  mixup: 0.0
+  cutmix: 0.0
+  classifier: ${model.name}_DEFAULT
+  set_model:
+    _target_: regularization_and_sc.fine_tuning.utils.freeze_model_but_lastlayer
+  name: ${model.name}_FineTuningLastLayer
+  saving_path: ${paths.models}/imagenet/estimators/finetuning/${model.name}
+model:
+  _target_: torchvision.models.get_model
+  name: resnet50
+  weights: DEFAULT
+fold: 0
+paths:
+  project: /home/pedro-pordeus/regularization_and_sc
+  models: ${paths.project}/models

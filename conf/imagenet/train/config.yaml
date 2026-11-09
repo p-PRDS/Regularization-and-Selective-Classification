@@ -1,0 +1,9 @@
+defaults:
+  - model: estimation_finetuning_lastlayer
+  - train: estimation_finetuning_lastlayer
+  - eval: estimator
+  - _self_ 
+  
+paths:
+  project: /home/pedro-pordeus/regularization_and_sc
+  models: ${paths.project}/models

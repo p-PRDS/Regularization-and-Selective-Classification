@@ -555,3 +555,6 @@ AttributeError: 'NoneType' object has no attribute '_set_flag'
 [2026-11-08 13:07:28,458][HYDRA] 	#14 : train.loss.label_smoothing=0.2 train.mixup=0 train.cutmix=0 train.fold=4 +experiments/best_classifier_search=_label_smoothing
 [2026-11-08 14:01:33,396][HYDRA] 	#15 : train.loss.label_smoothing=0.3 train.mixup=0 train.cutmix=0 train.fold=0 +experiments/best_classifier_search=_label_smoothing
 [2026-11-08 14:55:45,260][HYDRA] 	#16 : train.loss.label_smoothing=0.3 train.mixup=0 train.cutmix=0 train.fold=1 +experiments/best_classifier_search=_label_smoothing
+warning: `VIRTUAL_ENV=/home/pedro-pordeus/Regularization-and-Selective-Classification/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[2026-11-08 22:17:38,088][httpx2][INFO] - HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[2026-11-08 22:17:38,803][httpx2][INFO] - HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"

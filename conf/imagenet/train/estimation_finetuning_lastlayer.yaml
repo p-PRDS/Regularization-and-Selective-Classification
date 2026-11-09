@@ -1,0 +1,44 @@
+defaults:
+  - loss: CrossEntropy
+  - optimizer: SGD
+  - scheduler: MultiStepLR
+  - seeds: default
+  - wandb: estimators
+  - metrics: estimators
+  - _self_
+
+num_classes: 1000
+n_steps: 10560
+n_steps_for_eval: 352
+warmup_steps: 352
+
+valloader:
+  _target_: regularization_and_sc.imagenet.data.get_dataloader
+  split: val
+  val_split_seed: ${fold}
+
+trainloader:
+  _target_: regularization_and_sc.imagenet.data.get_dataloader
+  split: train
+  train_size: 10000 
+  batch_size: 128
+
+scheduler: 
+  milestones: [3168, 6336, 9504]
+  gamma: 0.2
+
+mixup: 0.0
+cutmix: 0.0
+
+classifier: ${model.name}_DEFAULT
+
+metrics:
+  val: 
+    FC-AURC:
+      classifier_logits_path: ${paths.models}/imagenet/classifiers/${model.name}/logits/val/${train.classifier}_fold_${fold}.pt
+
+set_model:
+  _target_: regularization_and_sc.fine_tuning.utils.freeze_model_but_lastlayer
+
+name: ${model.name}_FineTuningLastLayer
+saving_path: ${paths.models}/imagenet/estimators/finetuning/${model.name}

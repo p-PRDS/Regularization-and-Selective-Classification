@@ -1,5 +1,5 @@
 defaults:
-  - eval: classifier
+  - train: estimation_finetuning_lastlayer
   - model: resnet50
   - _self_
 

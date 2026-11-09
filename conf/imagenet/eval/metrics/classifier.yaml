@@ -10,7 +10,7 @@ test:
   pNormMaxLogit-AURC:
     _target_: regularization_and_sc.utils.metrics.pNormMaxLogit_AURC
     val_logits_path: ${eval.model.path}/logits/val/${eval.model.weights_name}_fold_${fold}.pt
-    val_labels_path: ${eval.model.path}/labels/val_labels_fold_{fold}.pt
+    val_labels_path: ${eval.model.path}/labels/val_labels_fold_${fold}.pt
     _partial_: true
   
 val: 

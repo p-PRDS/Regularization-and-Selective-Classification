@@ -1,0 +1,74 @@
+_wandb:
+    value:
+        cli_version: 0.31.0
+        e:
+            01a1bdd2-ec28-7ce0-bec7-c397d584f87c:
+                codePath: scripts/imagenet/train.py
+                codePathLocal: scripts/imagenet/train.py
+                cpu:
+                    model: Intel(R) Core(TM) i7-10700F CPU @ 2.90GHz
+                cpu_count: 8
+                cpu_count_logical: 16
+                cudaVersion: "13.0"
+                disk:
+                    /:
+                        total: "3935709487104"
+                        used: "522441392128"
+                executable: /home/pedro-pordeus/regularization_and_sc/.venv/bin/python
+                git:
+                    commit: 7c7fd0363cd9d62e047d94bb545b6d718355441b
+                    remote: https://github.com/p-PRDS/Regularization-and-Selective-Classification
+                gpu: NVIDIA GeForce RTX 3090
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 10496
+                      memoryTotal: "25769803776"
+                      name: NVIDIA GeForce RTX 3090
+                      pciBusId: "00000000:01:00.0"
+                      uuid: GPU-0e680335-a5d9-4ab0-bab9-2c6f6bfc1f2f
+                host: ml4
+                memory:
+                    total: "33559142400"
+                os: Linux-6.8.0-147-generic-x86_64-with-glibc2.39
+                program: /home/pedro-pordeus/regularization_and_sc/scripts/imagenet/train.py
+                python: CPython 3.13.13
+                root: /home/pedro-pordeus/regularization_and_sc
+                startedAt: "2026-11-09T01:01:19.053753Z"
+                writerId: 01a1bdd2-ec28-7ce0-bec7-c397d584f87c
+        m: []
+        python_version: 3.13.13
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 49
+                - 50
+                - 51
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 49
+                - 50
+                - 51
+                - 53
+            "3":
+                - 13
+                - 16
+            "4": 3.13.13
+            "5": 0.31.0
+            "12": 0.31.0
+            "13": linux-x86_64
+batchsize:
+    value: 256
+cutmix:
+    value: 0
+label_smoothing:
+    value: 0
+mixup:
+    value: 0
+weight_decay:
+    value: 0.0005

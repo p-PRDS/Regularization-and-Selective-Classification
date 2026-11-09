@@ -1,0 +1,3 @@
+_target_: torch.optim.lr_scheduler.MultiStepLR
+milestones: [21120, 42240, 63360]
+gamma: 0.2
